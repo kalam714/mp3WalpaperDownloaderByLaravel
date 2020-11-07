@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes([
+    'register'=>false
+]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::group(array('namespace'=>'App\Http\Controllers\Admin','middleware'=>'auth'),function(){
+    Route::resource('/ringtones','RingtoneController');
+
+});
