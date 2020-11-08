@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes([
     'register'=>false
@@ -26,5 +24,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(array('namespace'=>'App\Http\Controllers\Admin','middleware'=>'auth'),function(){
     Route::resource('/ringtones','RingtoneController');
+
+});
+Route::group(array('namespace'=>'App\Http\Controllers\Client'),function(){
+    Route::get('/','ClientController@index');
+    Route::get('/ringtone/{id}/{slug}','ClientController@show')->name('ringtone.show');
+    Route::post('/ringtone/download/{id}','ClientController@downlaod')->name('ringtone.downlaod');
+    Route::get('/category/{id}','ClientController@ringtoneByCategory')->name('ringtone.category');
 
 });
