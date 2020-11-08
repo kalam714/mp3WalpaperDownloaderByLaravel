@@ -46,10 +46,20 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('index') }}">Ringtones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('wallpaper') }}">WallPapers</a>
+                        </li>
                         <!-- Authentication Links -->
+
                         @if(Auth::check())
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('ringtones.index') }}">RingTones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('images.index') }}">Wallpaper</a>
                         </li>
 
                         @endif
